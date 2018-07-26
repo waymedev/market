@@ -20,7 +20,7 @@ public class LoginApi {
         this.loginService = loginService;
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/openid", method = RequestMethod.POST)
     public RestData postNotice(@RequestBody User user) {
         return new RestData(loginService.getCode(user));
     }

@@ -27,7 +27,6 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public Map<String, Object> getCode(User user) {
         //声明变量存储变量
-        List<Map<String, Object>> rtv = new ArrayList<>();
         Map<String, Object> map = new HashMap<>(2);
         String AppId = "wx5926376844b9df5c";
         String AppSecret = "743143f3edcc4d58f8195fa1db291b51";
@@ -35,8 +34,6 @@ public class LoginServiceImpl implements LoginService {
                 "appid="+AppId+"&secret="+AppSecret+"&js_code="+user.getCode()+"&grant_type=authorization_code";
         String json = loadJSON(url);
         JSONObject jb;
-
-
         Object openid = null;
         Object sessionKey  = null;
         try {
@@ -54,8 +51,8 @@ public class LoginServiceImpl implements LoginService {
 
         return map;
     }
-
-    private static String loadJSON(String url) {
+    @Override
+    public String loadJSON(String url) {
         //处理字符串
         StringBuilder json = new StringBuilder();
         try {

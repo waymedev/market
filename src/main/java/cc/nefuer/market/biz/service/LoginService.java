@@ -15,4 +15,11 @@ public interface LoginService {
      * @return 登陆信息
      */
     Map<String, Object> getCode(User user);
+
+    /**
+     * 获取json返回值
+     * @param url
+     * @return
+     */
+    String loadJSON(String url);
 }
