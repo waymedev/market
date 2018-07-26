@@ -21,7 +21,15 @@ public class LoginApi {
     }
 
     @RequestMapping(value = "/openid", method = RequestMethod.POST)
-    public RestData postNotice(@RequestBody User user) {
+    public RestData postOpenId(@RequestBody User user) {
         return new RestData(loginService.getCode(user));
+    }
+
+    @RequestMapping(value = "/signup", method = RequestMethod.POST)
+    public RestData postUser(@RequestBody User user) {
+        if (loginService.postUser(user)) {
+            return new RestData(user.getUserId());
+        }
+        return null;
     }
 }

@@ -22,4 +22,12 @@ public interface LoginService {
      * @return
      */
     String loadJSON(String url);
+
+    /**
+     * 添加用户
+     *
+     * @param user 参数集
+     * @return 是否添加成功
+     */
+    boolean postUser(User user);
 }

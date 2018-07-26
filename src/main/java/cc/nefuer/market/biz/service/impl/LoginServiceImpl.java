@@ -2,10 +2,13 @@ package cc.nefuer.market.biz.service.impl;
 
 import cc.nefuer.market.biz.service.LoginService;
 import cc.nefuer.market.common.RestData;
+import cc.nefuer.market.core.mapper.UserMapper;
 import cc.nefuer.market.core.model.User;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sun.rmi.runtime.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,6 +27,14 @@ import java.util.Map;
  */
 @Service
 public class LoginServiceImpl implements LoginService {
+
+    private final UserMapper userMapper;
+
+    @Autowired
+    public LoginServiceImpl(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
+
     @Override
     public Map<String, Object> getCode(User user) {
         //声明变量存储变量
@@ -76,5 +87,12 @@ public class LoginServiceImpl implements LoginService {
         } catch (IOException e) {
         }
         return json.toString();
+    }
+
+    @Override
+    public boolean postUser(User user) {
+        boolean rtv = false;
+        rtv = 0 < userMapper.insert(user);
+        return rtv;
     }
 }
