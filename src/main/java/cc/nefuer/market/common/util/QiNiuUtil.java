@@ -12,7 +12,7 @@ public class QiNiuUtil {
     private static String secretKey;
     private static String bucket;
 
-    public static String creatUpdateToken(String accessKey, String secretKey, String bucket) {
+    public static String createUpdateToken(String accessKey, String secretKey, String bucket) {
 
         Auth auth = Auth.create(accessKey, secretKey);
         String upToken = auth.uploadToken(bucket);
