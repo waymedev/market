@@ -34,7 +34,7 @@ public interface UserMapper {
             @Result(property = "createTime", column = "create_time"),
             @Result(property = "lastEditTime", column = "last_edit_time"),
     })
-    User selectByUserId(String userId);
+    User selectByUserId(int userId);
 
     /**
      * 插入新纪录

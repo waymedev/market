@@ -33,7 +33,6 @@ public class LoginApi {
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public RestData postUser(@RequestBody User user, HttpServletRequest request) {
         User currentUser = TokenUtil.getUserByToken(request);
-        System.out.println(currentUser);
         if(null != currentUser) {
             return new RestData(2, ErrorMessage.POST_EVENT_FAILED);
         }
@@ -41,5 +40,14 @@ public class LoginApi {
             return new RestData(user.getUserId());
         }
         return null;
+    }
+
+    @RequestMapping(value = "/info/{userId}", method = RequestMethod.GET)
+    public RestData postUser(@PathVariable(value = "userId") int userId, HttpServletRequest request) {
+        User currentUser = TokenUtil.getUserByToken(request);
+        if(null == currentUser) {
+            return new RestData(2, ErrorMessage.PLEASE_RELOGIN);
+        }
+        return loginService.getInfo(userId);
     }
 }

@@ -30,4 +30,11 @@ public interface LoginService {
      * @return 是否添加成功
      */
     boolean postUser(User user);
+
+    /**
+     * 获取用户详细信息
+     * @param userId
+     * @return
+     */
+    RestData getInfo(int userId);
 }

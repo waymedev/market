@@ -101,4 +101,22 @@ public class LoginServiceImpl implements LoginService {
         rtv = 0 < userMapper.insert(user);
         return rtv;
     }
+
+    @Override
+    public RestData getInfo(int userId) {
+        Map<String,Object> map = new HashMap<>(11);
+        User user = userMapper.selectByUserId(userId);
+        map.put("userId",user.getUserId());
+        map.put("wechatName",user.getWechatName());
+        map.put("name",user.getName());
+        map.put("profileImg",user.getProfileImg());
+        map.put("gender",user.getGender());
+        map.put("telNumber",user.getTelNumber());
+        map.put("address",user.getAddress());
+        map.put("openId",user.getOpenId());
+        map.put("sessionKey",user.getSessionKey());
+        map.put("createTime",user.getCreateTime());
+        map.put("lastEditTime",user.getLastEditTime());
+        return new RestData(map);
+    }
 }
