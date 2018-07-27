@@ -240,6 +240,8 @@
 	- sortId ： 分类id
 	- content ： 内容
 	- publishId : 发布者ID
+    - createTime : 创建时间
+    - view ：浏览人数
 	- status : 商品状态   0 审核未通过|1 审核通过|2 已出售|3 已关闭
 
 ```json
@@ -253,7 +255,9 @@
 		"sortId" : 123,
 		"content" : "asdasd",
 		"publishId" : 123,
-		"status" : 1,
+        "createTime" : "2010-10-10",
+        "view" : 100,
+		"status" : 1
 	},
 	{
 		"itmId" : 123,
@@ -262,7 +266,9 @@
 		"sortId" : 123,
 		"content" : "asdasd",
 		"publishId" : 123,
-		"status" : 1,
+        "createTime" : "2010-10-10",
+        "view" : 100,
+		"status" : 1
 	}	
 	]
 	
@@ -282,10 +288,7 @@
 
 ```json
 {
-	"data" : 
-	{
-		"content" : "bababba",
-	}		
+	"content" : "bababba"
 }
 	
 ```
