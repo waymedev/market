@@ -241,6 +241,7 @@
 	- content ： 内容
 	- publishId : 发布者ID
 	- status : 商品状态   0 审核未通过|1 审核通过|2 已出售|3 已关闭
+	- issueTime : 发布时间
 
 ```json
 {
@@ -254,6 +255,7 @@
 		"content" : "asdasd",
 		"publishId" : 123,
 		"status" : 1,
+		"issueTime": 2018-08-08 08:08,
 	},
 	{
 		"itmId" : 123,
@@ -263,6 +265,7 @@
 		"content" : "asdasd",
 		"publishId" : 123,
 		"status" : 1,
+		"issueTime": 2018-08-08 08:08,
 	}	
 	]
 	
