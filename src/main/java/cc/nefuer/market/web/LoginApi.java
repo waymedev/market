@@ -1,10 +1,15 @@
 package cc.nefuer.market.web;
 
 import cc.nefuer.market.biz.service.LoginService;
+import cc.nefuer.market.common.ErrorMessage;
 import cc.nefuer.market.common.RestData;
+import cc.nefuer.market.common.util.TokenUtil;
 import cc.nefuer.market.core.model.User;
+import jdk.nashorn.internal.parser.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author jimi花
@@ -26,7 +31,12 @@ public class LoginApi {
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public RestData postUser(@RequestBody User user) {
+    public RestData postUser(@RequestBody User user, HttpServletRequest request) {
+        User currentUser = TokenUtil.getUserByToken(request);
+        System.out.println(currentUser);
+        if(null != currentUser) {
+            return new RestData(2, ErrorMessage.POST_EVENT_FAILED);
+        }
         if (loginService.postUser(user)) {
             return new RestData(user.getUserId());
         }

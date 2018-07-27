@@ -194,6 +194,29 @@
 }
 ```
 
+## 1.3.3 获取图片
+
+- GET /img/{itemId}
+- paylod : 
+	- ietmId : 当前商品的ID
+	//根据添加的时间升序排序
+- return :
+```json
+{
+	"code" : 0,
+	"data" : [
+		{
+			"imgUrl" : "http://baidu.com"
+		},
+		{
+			"imgUrl" : "http://baidu.com"
+		},
+	]
+}
+```
+
+
+
 
 # 1.4 商品相关
 
@@ -276,6 +299,30 @@
 
 ```
 
+# 1.5 分类
+
+## 1.5.1 获取分类
+
+- GET /sort
+- return :
+
+```json
+{
+	"code" : 0,
+	"data" : [
+		{
+			"sortId" : 1,
+			"sortName" : "手机数码"
+		},
+		{
+			"sortId" : 2,
+			"sortName" : "二手书籍"
+		},
+	]
+}
+```
+
+
 ---- 暂停-----
 
 # 1.5 评论
@@ -329,10 +376,6 @@
 	]
 }
 ```
-
-
-
-
 
 # 1.6 收藏
 

@@ -1,5 +1,6 @@
 package cc.nefuer.market.core.mapper;
 
+import cc.nefuer.market.core.mapper.provider.UserProvider;
 import cc.nefuer.market.core.model.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
@@ -33,7 +34,7 @@ public interface UserMapper {
             @Result(property = "createTime", column = "create_time"),
             @Result(property = "lastEditTime", column = "last_edit_time"),
     })
-    User selectByUserId(int userId);
+    User selectByUserId(String userId);
 
     /**
      * 插入新纪录
@@ -47,4 +48,7 @@ public interface UserMapper {
             "#{sessionKey})")
     @Options(useGeneratedKeys = true, keyProperty = "userId")
     int insert(User user);
+
+    @SelectProvider(type = UserProvider.class, method = "selectByCondition")
+    List<User> selectByCondition(User user);
 }
