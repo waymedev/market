@@ -10,7 +10,7 @@ public class User {
     /**
      * 用户Id
      */
-    private String userId;
+    private Integer userId;
     /**
      * 微信昵称
      */
@@ -56,11 +56,11 @@ public class User {
      */
     private String lastEditTime;
 
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

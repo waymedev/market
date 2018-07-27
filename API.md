@@ -56,7 +56,7 @@
 ```
 ## 1.1.3 获取用户信息
 
-- GET /userinfo/{userId}
+- GET /info/{userId}
 - return :
 ```json
 {
@@ -312,10 +312,12 @@
 	"data" : [
 		{
 			"sortId" : 1,
+			"sortIndex" : 1,
 			"sortName" : "手机数码"
 		},
 		{
 			"sortId" : 2,
+            "sortIndex" : 2,
 			"sortName" : "二手书籍"
 		},
 	]
