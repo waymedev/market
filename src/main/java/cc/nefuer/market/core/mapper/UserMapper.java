@@ -43,12 +43,17 @@ public interface UserMapper {
      * @return 插入记录数
      */
     @Insert("INSERT INTO tb_user(wechat_name,gender,profile_img,name," +
-            "tel_number,address,open_id,session_key) VALUES(#{wechatName}," +
+            "tel_number,address,open_id,session_key,create_time,last_edit_time) VALUES(#{wechatName}," +
             "#{gender},#{profileImg},#{name},#{telNumber},#{address},#{openId}," +
-            "#{sessionKey})")
+            "#{sessionKey},#{createTime},#{lastEditTime})")
     @Options(useGeneratedKeys = true, keyProperty = "userId")
     int insert(User user);
 
+    /**
+     * 根据条件查询结果
+     * @param user
+     * @return 满足条件的返回集合
+     */
     @SelectProvider(type = UserProvider.class, method = "selectByCondition")
     List<User> selectByCondition(User user);
 }

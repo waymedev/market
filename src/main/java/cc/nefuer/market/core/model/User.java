@@ -50,11 +50,11 @@ public class User {
     /**
      * 创建时间
      */
-    private Date createTime;
+    private String createTime;
     /**
      * 最后编辑时间
      */
-    private Date lastEditTime;
+    private String lastEditTime;
 
     public String getUserId() {
         return userId;
@@ -136,19 +136,19 @@ public class User {
         this.sessionKey = sessionKey;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 
-    public Date getLastEditTime() {
+    public String getLastEditTime() {
         return lastEditTime;
     }
 
-    public void setLastEditTime(Date lastEditTime) {
+    public void setLastEditTime(String lastEditTime) {
         this.lastEditTime = lastEditTime;
     }
 }

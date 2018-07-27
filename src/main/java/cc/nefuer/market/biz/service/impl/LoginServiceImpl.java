@@ -16,6 +16,8 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -92,6 +94,10 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public boolean postUser(User user) {
         boolean rtv = false;
+        LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        user.setCreateTime(localDateTime.format(format));
+        user.setLastEditTime(localDateTime.format(format));
         rtv = 0 < userMapper.insert(user);
         return rtv;
     }
