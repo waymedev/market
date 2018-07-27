@@ -18,7 +18,7 @@ public class qiNiuServiceImpl implements QiNiuService {
     @Override
     public Map<String, Object> getUpToken(QiNiu qiNiu) {
         Map<String, Object> map = new HashMap<>(1);
-        String upToken = QiNiuUtil.creatUpdateToken(qiNiu.getAk(),qiNiu.getSk(),qiNiu.getBucket());
+        String upToken = QiNiuUtil.createUpdateToken(qiNiu.getAk(),qiNiu.getSk(),qiNiu.getBucket());
         map.put("uptoken",upToken);
         return map;
     }
