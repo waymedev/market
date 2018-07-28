@@ -29,7 +29,7 @@
 ## 1.1.2 添加用户 [完成]
 
 - POST /singup
-- payload :
+- payload : （允许为空）
 	- name : 真实姓名
 	- telNumber : 手机号码
 	- addr : 收货地址
@@ -48,12 +48,35 @@
 ```
 
 - return :
+传参注册成功
 ```json
 {
 	"code" : 0,
 	"userId" : 12
 }
 ```
+
+传空已经被注册
+```json
+{
+    "code": 2,
+    "data": {
+        "message": "欢迎回来!",
+        "userId": 100045
+    }
+}
+```
+
+传空未被注册
+```json
+{
+    "code": 0,
+    "data": "请重新登陆"
+}
+```
+
+
+
 ## 1.1.3 获取用户信息 [完成]
 
 - GET /info/{userId}
@@ -252,21 +275,64 @@
 }
 ```
 
-## 1.4.2 获取商品
+## 1.4.2 获取分类商品
 
-- GET /item/{sortId}
+- GET /item/?sortId=
 - sortId 为空返回全部商品，否则返回对应分类商品
 - return ： 
 	- itmId ：商品ID
 	- name ：商品名
 	- price ： 价格
-	- sortId ： 分类id
-	- content ： 内容
+	- sortId : 123
 	- publishId : 发布者ID
     - createTime : 创建时间
     - view ：浏览人数
 	- status : 商品状态   0 审核未通过|1 审核通过|2 已出售|3 已关闭
 
+```json
+{
+	"code" : 0,
+	"data" : [
+		{
+		"itmId" : 123,
+		"name" : "商品1",
+		"price" : 123,
+		"sortId" : 123,
+		"publishId" : 123,
+        "createTime" : "2010-10-10",
+        "view" : 100,
+		"status" : 1
+	},
+	{
+		"itmId" : 123,
+		"name" : "商品1",
+		"price" : 123,
+		"sortId" : 123,
+		"publishId" : 123,
+        "createTime" : "2010-10-10",
+        "view" : 100,
+		"status" : 1
+	}	
+	]
+	
+}
+
+```
+
+## 1.4.3 获取具体商品
+- GET /item?itemId=
+- payload :
+	itemId : 商品Id
+
+- return :
+- itmId ：商品ID
+	- name ：商品名
+	- price ： 价格
+	- sortId : 123
+	- publishId : 发布者ID
+    - createTime : 创建时间
+    - view ：浏览人数
+	- status : 商品状态   0 审核未通过|1 审核通过|2 已出售|3 已关闭
 ```json
 {
 	"code" : 0,
@@ -292,11 +358,9 @@
         "createTime" : "2010-10-10",
         "view" : 100,
 		"status" : 1
-	}	
+	},
 	]
-	
 }
-
 ```
 
 # 1.5 分类

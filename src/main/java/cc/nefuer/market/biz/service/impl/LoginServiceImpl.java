@@ -23,6 +23,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static cc.nefuer.market.common.ErrorMessage.POST_EVENT_FAILED;
+
 /**
  * @author jimi花
  * @dare 2018/7/24
@@ -118,5 +120,14 @@ public class LoginServiceImpl implements LoginService {
         map.put("createTime",user.getCreateTime());
         map.put("lastEditTime",user.getLastEditTime());
         return new RestData(map);
+    }
+
+    @Override
+    public RestData getUserId(User user) {
+        Map<String , Object> map = new HashMap<>(2);
+        List<User> users = userMapper.selectByCondition(user);
+        map.put("userId",users.get(0).getUserId());
+        map.put("message" , POST_EVENT_FAILED);
+        return new RestData(2,map);
     }
 }

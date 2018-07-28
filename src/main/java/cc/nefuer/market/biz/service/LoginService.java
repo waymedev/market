@@ -37,4 +37,11 @@ public interface LoginService {
      * @return
      */
     RestData getInfo(int userId);
+
+    /**
+     * get用户ID
+     * @param user
+     * @return
+     */
+    RestData getUserId(User user);
 }
