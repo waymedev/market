@@ -83,12 +83,17 @@
 - return :
 ```json
 {
-	"wechatName" : "改个名字太急人了",
-	"gender" : "男",
-	"profileImg" : "http://baidu.com",
-	"name" : "陈",
-	"telNmubner" : "123123",
-	"addr" : "新校区"
+        "telNumber": "123123",
+        "address": "新校区",
+        "gender": "男",
+        "sessionKey": "asdsa",
+        "createTime": "2018-07-28 00:00:00.0",
+        "openId": "oFlyK5dL0fSurY_d4g5Dzi2X6UKI",
+        "name": "陈",
+        "wechatName": "玳玳花",
+        "profileImg": "http://baidu.com",
+        "lastEditTime": "2018-07-28 00:00:00.0",
+        "userId": 100046
 }
 ```
 
@@ -220,8 +225,8 @@
 ## 1.3.3 获取图片
 
 - GET /img/{itemId}
-- paylod : 
-	- ietmId : 当前商品的ID
+- payload : 
+	- itemId : 当前商品的ID
 	//根据添加的时间升序排序
 - return :
 ```json
@@ -233,7 +238,7 @@
 		},
 		{
 			"imgUrl" : "http://baidu.com"
-		},
+		}
 	]
 }
 ```
@@ -251,6 +256,7 @@
 	- price ： 价格
 	- sortId ： 分类id
 	- content ： 内容
+	- views : 查看人数
 	- publishId : 发布者ID
 	- status : 商品状态   0 审核未通过|1 审核通过|2 已出售|3 已关闭
 
@@ -261,6 +267,7 @@
 	"sortId" : 1,
 	"content" : "balabalabalablab",
 	"publishId" : 123,
+	"views" : 1,
 	"status" : 1
 }
 
@@ -286,7 +293,7 @@
 	- sortId : 123
 	- publishId : 发布者ID
     - createTime : 创建时间
-    - view ：浏览人数
+    - views ：浏览人数
 	- status : 商品状态   0 审核未通过|1 审核通过|2 已出售|3 已关闭
 
 ```json
@@ -300,7 +307,7 @@
 		"sortId" : 123,
 		"publishId" : 123,
         "createTime" : "2010-10-10",
-        "view" : 100,
+        "views" : 100,
 		"status" : 1
 	},
 	{
@@ -310,7 +317,7 @@
 		"sortId" : 123,
 		"publishId" : 123,
         "createTime" : "2010-10-10",
-        "view" : 100,
+        "views" : 100,
 		"status" : 1
 	}	
 	]
@@ -336,8 +343,7 @@
 ```json
 {
 	"code" : 0,
-	"data" : [
-		{
+	"data" : {
 		"itmId" : 123,
 		"name" : "商品1",
 		"price" : 123,
@@ -345,21 +351,9 @@
 		"content" : "asdasd",
 		"publishId" : 123,
         "createTime" : "2010-10-10",
-        "view" : 100,
+        "views" : 100,
 		"status" : 1
-	},
-	{
-		"itmId" : 123,
-		"name" : "商品1",
-		"price" : 123,
-		"sortId" : 123,
-		"content" : "asdasd",
-		"publishId" : 123,
-        "createTime" : "2010-10-10",
-        "view" : 100,
-		"status" : 1
-	},
-	]
+	}
 }
 ```
 
@@ -455,7 +449,7 @@
 {
 	"data" : 
 	{
-		"itemId" : "bababba",
+		"itemId" : "bababba"
 	}		
 }
 	

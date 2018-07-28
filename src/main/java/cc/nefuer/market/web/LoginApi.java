@@ -35,7 +35,6 @@ public class LoginApi {
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public RestData postUser(@RequestBody User user, HttpServletRequest request) {
         User currentUser = TokenUtil.getUserByToken(request);
-        System.out.println(user);
         if(null != currentUser) {
             user.setOpenId(request.getHeader("openId"));
             return loginService.getUserId(user);
