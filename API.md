@@ -204,9 +204,11 @@
 ```json
 [
     {
+		"itemId" : 1,
         "imgUrl" : "http://baidu.com"
     },
     {
+		"itemId" : 1,
         "imgUrl" : "http://google.com"
     }
 ]
@@ -216,7 +218,14 @@
 ```json
 {
 	"code" : 0,
-	"data" : true
+	"data" : [
+		{
+			"imgId" :1
+		},
+		{
+			"imgId" :2
+		}
+	]
 }
 ```
 
@@ -229,15 +238,29 @@
 - return :
 ```json
 {
-	"code" : 0,
-	"data" : [
-		{
-			"imgUrl" : "http://baidu.com"
-		},
-		{
-			"imgUrl" : "http://baidu.com"
-		}
-	]
+    "code": 0,
+    "data": [
+        {
+            "imgId": 1,
+            "imgUrl": "http://google.com",
+            "itemId": 1
+        },
+        {
+            "imgId": 1,
+            "imgUrl": "http://baidu.com",
+            "itemId": 1
+        },
+        {
+            "imgId": 1,
+            "imgUrl": "http://google.com",
+            "itemId": 1
+        },
+        {
+            "imgId": 1,
+            "imgUrl": "http://baidu.com",
+            "itemId": 1
+        }
+    ]
 }
 ```
 
