@@ -183,10 +183,10 @@
 }
 ```
 
-# 1.3 图片相关
+# 1.3 图片相关 [完成]
 
-## 1.3.1 获取uptoken [完成]
 
+## 1.3.1 获取uptoken 
 - GET /uptoken
 - return : 
 ```json
@@ -202,16 +202,14 @@
 - payload :
 
 ```json
-{
-	"data": [
-        {
-            "imgUrl" : "http://baidu.com"
-        },
-        {
-            "imgUrl" : "http://google.com"
-        }
-    ]
-}
+[
+    {
+        "imgUrl" : "http://baidu.com"
+    },
+    {
+        "imgUrl" : "http://google.com"
+    }
+]
 ```
 
 - return :
@@ -246,7 +244,7 @@
 
 
 
-# 1.4 商品相关
+# 1.4 商品相关 [完成]
 
 ## 1.4.1 发布商品
 
@@ -294,7 +292,6 @@
 	- publishId : 发布者ID
     - createTime : 创建时间
     - views ：浏览人数
-	- status : 商品状态   0 审核未通过|1 审核通过|2 已出售|3 已关闭
 
 ```json
 {
@@ -307,8 +304,7 @@
 		"sortId" : 123,
 		"publishId" : 123,
         "createTime" : "2010-10-10",
-        "views" : 100,
-		"status" : 1
+        "views" : 100
 	},
 	{
 		"itmId" : 123,
@@ -317,8 +313,7 @@
 		"sortId" : 123,
 		"publishId" : 123,
         "createTime" : "2010-10-10",
-        "views" : 100,
-		"status" : 1
+        "views" : 100
 	}	
 	]
 	
