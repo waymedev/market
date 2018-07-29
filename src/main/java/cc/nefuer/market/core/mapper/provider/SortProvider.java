@@ -12,7 +12,7 @@ public class SortProvider {
             {
                 SELECT("sort_id AS sortId,sort_name AS sortName,sort_index AS sortIndex");
                 FROM("tb_sort");
-                ORDER_BY("sort_index ASCz");
+                ORDER_BY("sort_index ASC");
             }
         }.toString();
     }
