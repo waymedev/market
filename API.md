@@ -313,6 +313,8 @@
 	- price ： 价格
 	- sortId : 123
 	- publishId : 发布者ID
+    - profileImg：发布者头像地址
+    - wechatName：发布者昵称
     - createTime : 创建时间
     - views ：浏览人数
 
@@ -326,6 +328,8 @@
 		"price" : 123,
 		"sortId" : 123,
 		"publishId" : 123,
+        "profileImg" : "http:",
+        "wechatName" : "name",
         "createTime" : "2010-10-10",
         "views" : 100
 	},
@@ -335,6 +339,8 @@
 		"price" : 123,
 		"sortId" : 123,
 		"publishId" : 123,
+        "profileImg" : "http:",
+        "wechatName" : "name",
         "createTime" : "2010-10-10",
         "views" : 100
 	}	
@@ -347,10 +353,10 @@
 ## 1.4.3 获取具体商品
 - GET /item?itemId=
 - payload :
-	itemId : 商品Id
+	itemId : 商品Id 为空返回全部商品，否则返回对应商品
 
 - return :
-- itmId ：商品ID
+    - itmId ：商品ID
 	- name ：商品名
 	- price ： 价格
 	- sortId : 123
@@ -368,6 +374,8 @@
 		"sortId" : 123,
 		"content" : "asdasd",
 		"publishId" : 123,
+        "profileImg" : "http:",
+        "wechatName" : "name",
         "createTime" : "2010-10-10",
         "views" : 100,
 		"status" : 1
