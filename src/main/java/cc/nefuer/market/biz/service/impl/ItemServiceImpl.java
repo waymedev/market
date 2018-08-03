@@ -73,6 +73,7 @@ public class ItemServiceImpl implements ItemService {
                     map.put("name",items.getName());
                     map.put("price",items.getPrice());
                     map.put("sortId",items.getSortId());
+                    map.put("content",items.getContent());
                     map.put("publishId",items.getPublishId());
                     map.put("profileImg",user.getProfileImg());
                     map.put("wechatName",user.getWechatName());
