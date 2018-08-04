@@ -2,8 +2,10 @@ package cc.nefuer.market.biz.service.impl;
 
 import cc.nefuer.market.biz.service.ItemService;
 import cc.nefuer.market.common.RestData;
+import cc.nefuer.market.core.mapper.ImgMapper;
 import cc.nefuer.market.core.mapper.ItemMapper;
 import cc.nefuer.market.core.mapper.UserMapper;
+import cc.nefuer.market.core.model.Img;
 import cc.nefuer.market.core.model.Item;
 import cc.nefuer.market.core.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +27,13 @@ public class ItemServiceImpl implements ItemService {
 
     private final ItemMapper itemMapper;
     private final UserMapper userMapper;
+    private final ImgMapper imgMapper;
 
     @Autowired
-    public ItemServiceImpl(ItemMapper itemMapper,UserMapper userMapper) {
+    public ItemServiceImpl(ItemMapper itemMapper,UserMapper userMapper,ImgMapper imgMapper) {
         this.userMapper = userMapper;
         this.itemMapper = itemMapper;
+        this.imgMapper = imgMapper;
     }
 
     @Override
@@ -50,6 +54,9 @@ public class ItemServiceImpl implements ItemService {
         List<Item> data = itemMapper.selectItem(item);
 
         if(data.size() == 1) {
+            Img img = new Img();
+            img.setItemId(data.get(0).getItemId());
+            List<Img> imgList = imgMapper.selectImg(img);
             User user = userMapper.selectByUserId(data.get(0).getPublishId());
             Map<String, Object> map = new HashMap<>(8);
             map.put("itemId",data.get(0).getItemId());
@@ -63,12 +70,16 @@ public class ItemServiceImpl implements ItemService {
             map.put("views",data.get(0).getViews());
             map.put("status",data.get(0).getStatus());
             map.put("createTime",data.get(0).getCreateTime());
+            map.put("img",imgList);
             return new RestData(map);
         } else {
             for(Item items : data) {
                 if(items.getStatus() == 1) {
+                    Img img = new Img();
+                    img.setItemId(items.getItemId());
+                    List<Img> imgList = imgMapper.selectImg(img);
                     User user = userMapper.selectByUserId(items.getPublishId());
-                    Map<String, Object> map = new HashMap<>(7);
+                    Map<String, Object> map = new HashMap<>(11);
                     map.put("itemId",items.getItemId());
                     map.put("name",items.getName());
                     map.put("price",items.getPrice());
@@ -79,6 +90,7 @@ public class ItemServiceImpl implements ItemService {
                     map.put("wechatName",user.getWechatName());
                     map.put("views",items.getViews());
                     map.put("createTime",items.getCreateTime());
+                    map.put("img",imgList);
                     rtv.add(map);
                 }
             }
