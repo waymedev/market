@@ -360,14 +360,20 @@
         "createTime" : "2010-10-10",
         "views" : 100
 	}	
-	]
+	],
+	"page": {
+        "currentPage": 1,
+        "totalPage": 3,
+        "pageSize": 4,
+        "totalSize": 12
+    }
 	
 }
 
 ```
 
 ## 1.4.3 获取具体商品
-- GET /item?itemId=1?page=1
+- GET /item?itemId=1
 - payload :
 	itemId : 商品Id 为空返回全部商品，否则返回对应商品
 	page : 请求页数 默认为1;
