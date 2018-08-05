@@ -264,8 +264,22 @@
 }
 ```
 
+## 1.3.4 获取单个图片
 
+- GET /img/{imgId}
+- payload : 
+	- imgId : 当前图片的ID
 
+- return :
+```json
+{
+  "code" : 1,
+  "data" : {
+      "itemId" : 123,
+      "imgUrl" : "http://baidu.com"
+  }
+}
+```
 
 # 1.4 商品相关 [完成]
 

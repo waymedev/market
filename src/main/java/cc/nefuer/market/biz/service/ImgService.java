@@ -21,9 +21,11 @@ public interface ImgService {
     RestData postImg(List<Img> imgs);
 
     /**
-     * 获取商品
+     * 获取商品图片
      * @param img
      * @return
      */
     RestData getImg(Img img);
+
+    RestData getImgInfo(int imgId);
 }

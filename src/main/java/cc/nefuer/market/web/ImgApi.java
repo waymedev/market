@@ -41,4 +41,13 @@ public class ImgApi {
     public RestData getImg(Img img) {
         return imgService.getImg(img);
     }
+
+    @RequestMapping(value = "/img/{imgId}", method = RequestMethod.GET)
+    public RestData postUser(@PathVariable(value = "imgId") int imgId, HttpServletRequest request) {
+        User currentUser = TokenUtil.getUserByToken(request);
+        if(null == currentUser) {
+            return new RestData(2, ErrorMessage.PLEASE_RELOGIN);
+        }
+        return imgService.getImgInfo(imgId);
+    }
 }

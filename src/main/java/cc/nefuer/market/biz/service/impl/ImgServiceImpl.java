@@ -62,4 +62,17 @@ public class ImgServiceImpl implements ImgService {
             return new RestData(rtv);
         }
     }
+
+    @Override
+    public RestData getImgInfo(int imgId) {
+
+        Map<String, Object> map = new HashMap<>();
+
+        Img img = imgMapper.selectByImgId(imgId);
+
+        map.put("itemId", img.getItemId());
+        map.put("imgUrl",img.getImgUrl());
+
+        return new RestData(map);
+    }
 }

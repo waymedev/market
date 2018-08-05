@@ -3,10 +3,7 @@ package cc.nefuer.market.core.mapper;
 import cc.nefuer.market.core.mapper.provider.ImgProvider;
 import cc.nefuer.market.core.mapper.provider.ItemProvider;
 import cc.nefuer.market.core.model.Img;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -36,4 +33,16 @@ public interface ImgMapper {
      */
     @SelectProvider(type = ImgProvider.class, method = "selectByCondition")
     List<Img> selectImg(Img img);
+
+    /**
+     * 根据ImgId查询
+     * @param imgId
+     * @return
+     */
+    @Select("SELECT * FROM tb_img WHERE img_id=#{imgId};")
+    @Results({
+            @Result(property = "itemId", column = "item_id"),
+            @Result(property = "imgUrl", column = "img_url"),
+    })
+    Img selectByImgId(int imgId);
 }
