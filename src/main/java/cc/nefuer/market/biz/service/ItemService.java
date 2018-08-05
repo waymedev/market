@@ -3,6 +3,7 @@ package cc.nefuer.market.biz.service;
 import cc.nefuer.market.common.RestData;
 import cc.nefuer.market.core.model.Item;
 import cc.nefuer.market.core.model.User;
+import cc.nefuer.market.core.model.vo.ItemVo;
 
 /**
  * @author jimi花
@@ -20,8 +21,8 @@ public interface ItemService {
 
     /**
      * 获取商品
-     * @param item
+     * @param itemVo
      * @return
      */
-    RestData getItem(Item item);
+    RestData getItem(ItemVo itemVo);
 }

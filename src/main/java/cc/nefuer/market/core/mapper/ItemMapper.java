@@ -1,10 +1,12 @@
 package cc.nefuer.market.core.mapper;
 
+import cc.nefuer.market.common.Page;
 import cc.nefuer.market.core.mapper.provider.ItemProvider;
 import cc.nefuer.market.core.mapper.provider.SortProvider;
 import cc.nefuer.market.core.model.Item;
 import cc.nefuer.market.core.model.Sort;
 import cc.nefuer.market.core.model.User;
+import cc.nefuer.market.core.model.vo.ItemVo;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -40,4 +42,23 @@ public interface ItemMapper {
      */
     @SelectProvider(type = ItemProvider.class, method = "selectByCondition")
     List<Item> selectItem(Item item);
+
+    /**
+     * 条件查询计数
+     *
+     * @param itemVo 参数集
+     * @return 符合条件的记录
+     */
+    @SelectProvider(type = ItemProvider.class, method = "countByCondition")
+    Page countByCondition(ItemVo itemVo);
+
+    /**
+     * 分页查询
+     *
+     * @param itemVo 参数集
+     * @param page   分页信息
+     * @return 符合条件的记录
+     */
+    @SelectProvider(type = ItemProvider.class, method = "selectByCondition")
+    List<Item> selectByCondition(ItemVo itemVo, Page page);
 }

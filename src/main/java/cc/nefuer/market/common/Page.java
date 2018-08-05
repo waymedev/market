@@ -18,7 +18,7 @@ public class Page {
     /**
      * 每页数据量,默认 10
      */
-    private Integer pageSize = 9;
+    private Integer pageSize = 4;
 
     /**
      * 数据总量

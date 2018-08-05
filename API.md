@@ -319,8 +319,10 @@
 
 ## 1.4.2 获取分类商品
 
-- GET /item/?sortId=
-- sortId 为空返回全部商品，否则返回对应分类商品
+- GET /item/?sortId=1?page=1
+- payload :
+	- sortId : 为空返回全部商品，否则返回对应分类商品
+	- page : 商品页数 默认为1
 - return ： 
 	- itmId ：商品ID
 	- name ：商品名
@@ -365,9 +367,10 @@
 ```
 
 ## 1.4.3 获取具体商品
-- GET /item?itemId=
+- GET /item?itemId=1?page=1
 - payload :
 	itemId : 商品Id 为空返回全部商品，否则返回对应商品
+	page : 请求页数 默认为1;
 
 - return :
     - itmId ：商品ID

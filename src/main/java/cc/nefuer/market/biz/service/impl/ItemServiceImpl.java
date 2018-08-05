@@ -1,13 +1,16 @@
 package cc.nefuer.market.biz.service.impl;
 
 import cc.nefuer.market.biz.service.ItemService;
+import cc.nefuer.market.common.Page;
 import cc.nefuer.market.common.RestData;
+import cc.nefuer.market.common.util.PageUtil;
 import cc.nefuer.market.core.mapper.ImgMapper;
 import cc.nefuer.market.core.mapper.ItemMapper;
 import cc.nefuer.market.core.mapper.UserMapper;
 import cc.nefuer.market.core.model.Img;
 import cc.nefuer.market.core.model.Item;
 import cc.nefuer.market.core.model.User;
+import cc.nefuer.market.core.model.vo.ItemVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,11 +51,22 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public RestData getItem(Item item) {
+    public RestData getItem(ItemVo itemVo) {
 
+        //System.out.println("itemId" + itemVo.getItemId());
+        //System.out.println("sortId" + itemVo.getSortId());
+
+        Page page ;
+        if(null == itemVo.getPage())
+            itemVo.setPage(1);
+
+        page = itemMapper.countByCondition(itemVo);
+        page.setCurrentPage(itemVo.getPage());
+        page.setPageSize(4);
+        page = PageUtil.checkPage(page);
         List<Map<String,Object>> rtv = new ArrayList<>();
-        List<Item> data = itemMapper.selectItem(item);
-
+        List<Item> data = itemMapper.selectByCondition(itemVo,page);
+        //System.out.println("data:" + data);
         if(data.size() == 1) {
             Img img = new Img();
             img.setItemId(data.get(0).getItemId());
@@ -95,7 +109,7 @@ public class ItemServiceImpl implements ItemService {
                 }
             }
 
-            return new RestData(rtv);
+            return new RestData(rtv,page);
         }
 
     }

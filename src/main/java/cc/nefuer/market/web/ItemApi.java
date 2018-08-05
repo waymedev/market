@@ -6,6 +6,7 @@ import cc.nefuer.market.common.RestData;
 import cc.nefuer.market.common.util.TokenUtil;
 import cc.nefuer.market.core.model.Item;
 import cc.nefuer.market.core.model.User;
+import cc.nefuer.market.core.model.vo.ItemVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,7 +42,7 @@ public class ItemApi {
     }
 
     @RequestMapping(value = "/item", method = RequestMethod.GET)
-    public RestData getItem(Item item) {
-        return itemService.getItem(item);
+    public RestData getItem(ItemVo itemVo) {
+        return itemService.getItem(itemVo);
     }
 }
