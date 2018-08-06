@@ -7,10 +7,7 @@ import cc.nefuer.market.core.model.Item;
 import cc.nefuer.market.core.model.Sort;
 import cc.nefuer.market.core.model.User;
 import cc.nefuer.market.core.model.vo.ItemVo;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -61,4 +58,7 @@ public interface ItemMapper {
      */
     @SelectProvider(type = ItemProvider.class, method = "selectByCondition")
     List<Item> selectByCondition(ItemVo itemVo, Page page);
+
+    @UpdateProvider(type = ItemProvider.class, method = "updateByItemId")
+    int updateByItemId(Item item);
 }

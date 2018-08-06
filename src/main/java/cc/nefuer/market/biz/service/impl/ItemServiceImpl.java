@@ -70,6 +70,17 @@ public class ItemServiceImpl implements ItemService {
         if(data.size() == 1 && itemVo.getItemId() != null) {
             Img img = new Img();
             img.setItemId(data.get(0).getItemId());
+
+            int views = data.get(0).getViews();
+            views++;
+            data.get(0).setViews(views);
+
+            Item itemTmp = new Item();
+            itemTmp.setItemId(data.get(0).getItemId());
+            itemTmp.setViews(data.get(0).getViews());
+
+            itemMapper.updateByItemId(itemTmp);
+
             List<Img> imgList = imgMapper.selectImg(img);
             User user = userMapper.selectByUserId(data.get(0).getPublishId());
             Map<String, Object> map = new HashMap<>(8);

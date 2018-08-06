@@ -50,4 +50,38 @@ public class ItemProvider {
             }
         }.toString();
     }
+
+    public String updateByItemId(Item item) {
+        return new SQL() {
+            {
+                UPDATE("tb_item");
+                if (null != item.getViews()) {
+                    SET("views=#{views}");
+                }
+                if (null != item.getName()) {
+                    SET("name=#{name}");
+                }
+                if (null != item.getPrice()) {
+                    SET("price=#{price}");
+                }
+                if (null != item.getContent()) {
+                    SET("content=#{content}");
+                }
+                if (null != item.getSortId()) {
+                    SET("sort_id=#{sortId}");
+                }
+                if (null != item.getPurchaseId()) {
+                    SET("purchase_id=#{purchaseId}");
+                }
+                if (null != item.getStatus()) {
+                    SET("status=#{status}");
+                }
+                if (null != item.getLastEditTime()) {
+                    SET("last_edit_time=#{lastEditTime}");
+                }
+                WHERE("item_id=#{itemId}");
+
+            }
+        }.toString();
+    }
 }

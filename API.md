@@ -281,6 +281,16 @@
 }
 ```
 
+## 1.3.5 删除图片
+- DELETE /img/{imgId}
+- return :
+```json
+{
+	"code" : 1,
+	"data" : true
+}
+```
+
 # 1.4 商品相关 [完成]
 
 ## 1.4.1 发布商品
@@ -347,7 +357,19 @@
         "profileImg" : "http:",
         "wechatName" : "name",
         "createTime" : "2010-10-10",
-        "views" : 100
+        "views" : 100,
+		"img" : [
+				{
+					"imgId": 104,
+                    "itemId": 123,
+                    "imgUrl": "http://baidu.com"
+				},
+				{
+					"imgId": 104,
+                    "itemId": 123,
+                    "imgUrl": "http://baidu.com"
+				}
+			]
 	},
 	{
 		"itmId" : 123,
@@ -358,7 +380,19 @@
         "profileImg" : "http:",
         "wechatName" : "name",
         "createTime" : "2010-10-10",
-        "views" : 100
+        "views" : 100,
+		"img" : [
+				{
+					"imgId": 104,
+                    "itemId": 123,
+                    "imgUrl": "http://baidu.com"
+				},
+				{
+					"imgId": 104,
+                    "itemId": 123,
+                    "imgUrl": "http://baidu.com"
+				}
+			]
 	}	
 	],
 	"page": {
@@ -377,7 +411,7 @@
 - payload :
 	itemId : 商品Id 为空返回全部商品，否则返回对应商品
 	page : 请求页数 默认为1;
-
+	head : userId
 - return :
     - itmId ：商品ID
 	- name ：商品名
@@ -387,7 +421,7 @@
     - createTime : 创建时间
     - view ：浏览人数
 	- status : 商品状态   0 审核未通过|1 审核通过|2 已出售|3 已关闭
-```json
+```json 
 {
 	"code" : 0,
 	"data" : {
@@ -401,10 +435,122 @@
         "wechatName" : "name",
         "createTime" : "2010-10-10",
         "views" : 100,
-		"status" : 1
+		"status" : 1,
+		"img" : [
+				{
+					"imgId": 104,
+                    "itemId": 123,
+                    "imgUrl": "http://baidu.com"
+				},
+				{
+					"imgId": 104,
+                    "itemId": 123,
+                    "imgUrl": "http://baidu.com"
+				}
+			]
 	}
 }
 ```
+
+## 1.4.4 获取发布商品列表
+- GET /item?publishId=
+- payload :
+	publishId : 用户Id 获取当前的发布
+
+- return : 
+```json
+{
+	"code" : 1,
+	"data" : [
+		{
+			"itmId" : 123,
+			"name" : "商品1",
+			"price" : 123,
+			"sortId" : 123,
+			"publishId" : 123,
+			"profileImg" : "http:",
+			"wechatName" : "name",
+			"createTime" : "2010-10-10",
+			"views" : 100,
+			"img" : [
+				{
+					"imgId": 104,
+                    "itemId": 123,
+                    "imgUrl": "http://baidu.com"
+				},
+				{
+					"imgId": 104,
+                    "itemId": 123,
+                    "imgUrl": "http://baidu.com"
+				}
+			]
+		},
+		{
+			"itmId" : 123,
+			"name" : "商品1",
+			"price" : 123,
+			"sortId" : 123,
+			"publishId" : 123,
+			"profileImg" : "http:",
+			"wechatName" : "name",
+			"createTime" : "2010-10-10",
+			"views" : 100,
+			"img" : [
+				{
+					"imgId": 104,
+                    "itemId": 123,
+                    "imgUrl": "http://baidu.com"
+				},
+				{
+					"imgId": 104,
+                    "itemId": 123,
+                    "imgUrl": "http://baidu.com"
+				}
+			]
+		}
+	],
+	"page": {
+        "currentPage": 1,
+        "totalPage": 3,
+        "pageSize": 4,
+        "totalSize": 12
+    }
+}
+```
+
+## 1.4.5 修改商品
+
+- PUT /item/{itemId}
+- payload :
+```json
+{
+	"name" : "新名字",
+	"price" : "",
+	"content" : "",
+	"sortId" : "",
+	"status" : ""
+}
+```
+- return : 
+```json
+{
+	"code" : 1,
+	"data" : true
+}
+```
+
+## 1.4.6 删除商品
+
+- DELETE /item/{itemId}
+- return :
+```json
+{
+	"code" : 1,
+	"data" : true
+}
+```
+
+## 1.4.7 购买 在购买后，通信被隐藏
 
 # 1.5 分类
 
@@ -432,7 +578,14 @@
 ```
 
 
+
+
 ---- 暂停-----
+
+
+
+
+
 
 # 1.5 评论
 
