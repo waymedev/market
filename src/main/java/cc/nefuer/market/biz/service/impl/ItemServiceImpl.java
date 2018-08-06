@@ -67,7 +67,7 @@ public class ItemServiceImpl implements ItemService {
         List<Map<String,Object>> rtv = new ArrayList<>();
         List<Item> data = itemMapper.selectByCondition(itemVo,page);
         //System.out.println("data:" + data);
-        if(data.size() == 1) {
+        if(data.size() == 1 && itemVo.getItemId() != null) {
             Img img = new Img();
             img.setItemId(data.get(0).getItemId());
             List<Img> imgList = imgMapper.selectImg(img);

@@ -19,7 +19,6 @@ public class ItemProvider {
                 SELECT("count(item_id) AS totalSize");
                 FROM("tb_item");
                 if (null != itemVo.getSortId()) {
-                    System.out.println("执行到这了");
                     WHERE("sort_id=" + itemVo.getSortId());
                 }
             }
