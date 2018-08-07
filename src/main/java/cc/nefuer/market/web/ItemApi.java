@@ -58,4 +58,14 @@ public class ItemApi {
         }
         return new RestData(itemService.deleteItem(itemId));
     }
+
+    @RequestMapping(value = "/item", method = RequestMethod.PUT)
+    public RestData putItem(@RequestBody Item item, HttpServletRequest request) {
+        User currentUser = TokenUtil.getUserByToken(request);
+        if (null == currentUser) {
+            return new RestData(2, ErrorMessage.PLEASE_RELOGIN);
+        }
+
+        return new RestData(itemService.putItem(item));
+    }
 }

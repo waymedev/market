@@ -34,4 +34,13 @@ public interface ItemService {
      * @return
      */
     boolean deleteItem(int itemId);
+
+    /**
+     * 修改商品
+     *
+     * @param item 参数集
+     * @return 是否修改成功
+     */
+    boolean putItem(Item item);
+
 }

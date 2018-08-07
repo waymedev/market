@@ -133,4 +133,9 @@ public class ItemServiceImpl implements ItemService {
     public boolean deleteItem(int itemId) {
         return 0 < itemMapper.deleteByItemId(itemId);
     }
+
+    @Override
+    public boolean putItem(Item item) {
+        return 0 < itemMapper.updateByItemId(item);
+    }
 }
