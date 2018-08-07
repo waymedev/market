@@ -27,4 +27,11 @@ public interface ItemService {
      * @return
      */
     RestData getItem(ItemVo itemVo, HttpServletRequest request);
+
+    /**
+     * 根据主键删除记录
+     * @param itemId
+     * @return
+     */
+    boolean deleteItem(int itemId);
 }

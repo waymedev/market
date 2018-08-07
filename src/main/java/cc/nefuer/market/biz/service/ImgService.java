@@ -27,5 +27,17 @@ public interface ImgService {
      */
     RestData getImg(Img img);
 
+    /**
+     * 获取图片详细信息
+     * @param imgId
+     * @return
+     */
     RestData getImgInfo(int imgId);
+
+    /**
+     * 根据主键删除记录
+     * @param imgId
+     * @return
+     */
+    boolean deleteImg(int imgId);
 }

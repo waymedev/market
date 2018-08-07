@@ -61,4 +61,13 @@ public interface ItemMapper {
 
     @UpdateProvider(type = ItemProvider.class, method = "updateByItemId")
     int updateByItemId(Item item);
+
+    /**
+     * 根据主键删除记录
+     *
+     * @param itemId 主键
+     * @return 删除记录数
+     */
+    @Delete("DELETE FROM tb_item WHERE item_id=#{itemId}")
+    int deleteByItemId(int itemId);
 }

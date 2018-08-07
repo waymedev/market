@@ -50,4 +50,13 @@ public class ImgApi {
         }
         return imgService.getImgInfo(imgId);
     }
+
+    @RequestMapping(value = "/img/{imgId}", method = RequestMethod.DELETE)
+    public RestData deletePic(@PathVariable(value = "imgId") int imgId, HttpServletRequest request) {
+        User currentUser = TokenUtil.getUserByToken(request);
+        if (null == currentUser) {
+            return new RestData(2, ErrorMessage.PLEASE_RELOGIN);
+        }
+        return new RestData(imgService.deleteImg(imgId));
+    }
 }

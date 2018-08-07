@@ -45,4 +45,13 @@ public interface ImgMapper {
             @Result(property = "imgUrl", column = "img_url"),
     })
     Img selectByImgId(int imgId);
+
+    /**
+     * 根据主键删除记录
+     *
+     * @param imgId 主键
+     * @return 删除记录数
+     */
+    @Delete("DELETE FROM tb_img WHERE img_id=#{imgId}")
+    int deleteByImgId(int imgId);
 }

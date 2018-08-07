@@ -49,4 +49,13 @@ public class ItemApi {
         }
         return itemService.getItem(itemVo,request);
     }
+
+    @RequestMapping(value = "/item/{itemId}", method = RequestMethod.DELETE)
+    public RestData deletePic(@PathVariable(value = "itemId") int itemId, HttpServletRequest request) {
+        User currentUser = TokenUtil.getUserByToken(request);
+        if (null == currentUser) {
+            return new RestData(2, ErrorMessage.PLEASE_RELOGIN);
+        }
+        return new RestData(itemService.deleteItem(itemId));
+    }
 }

@@ -75,4 +75,9 @@ public class ImgServiceImpl implements ImgService {
 
         return new RestData(map);
     }
+
+    @Override
+    public boolean deleteImg(int imgId) {
+        return 0 < imgMapper.deleteByImgId(imgId);
+    }
 }

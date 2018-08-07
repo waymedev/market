@@ -128,4 +128,9 @@ public class ItemServiceImpl implements ItemService {
         }
 
     }
+
+    @Override
+    public boolean deleteItem(int itemId) {
+        return 0 < itemMapper.deleteByItemId(itemId);
+    }
 }
