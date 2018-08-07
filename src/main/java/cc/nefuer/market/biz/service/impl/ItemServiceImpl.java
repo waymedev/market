@@ -14,6 +14,7 @@ import cc.nefuer.market.core.model.vo.ItemVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public RestData getItem(ItemVo itemVo) {
+    public RestData getItem(ItemVo itemVo, HttpServletRequest request) {
 
         //System.out.println("itemId" + itemVo.getItemId());
         //System.out.println("sortId" + itemVo.getSortId());
@@ -71,15 +72,18 @@ public class ItemServiceImpl implements ItemService {
             Img img = new Img();
             img.setItemId(data.get(0).getItemId());
 
-            int views = data.get(0).getViews();
-            views++;
-            data.get(0).setViews(views);
-
-            Item itemTmp = new Item();
-            itemTmp.setItemId(data.get(0).getItemId());
-            itemTmp.setViews(data.get(0).getViews());
-
-            itemMapper.updateByItemId(itemTmp);
+            //当用户自己浏览自己的商品 浏览人数不增加
+            if(!request.getHeader("userId").equals(data.get(0).getPublishId().toString())) {
+                //System.out.println(request.getHeader("userId"));
+                //System.out.println(data.get(0).getPublishId());
+                int views = data.get(0).getViews();
+                views++;
+                data.get(0).setViews(views);
+                Item itemTmp = new Item();
+                itemTmp.setItemId(data.get(0).getItemId());
+                itemTmp.setViews(data.get(0).getViews());
+                itemMapper.updateByItemId(itemTmp);
+            }
 
             List<Img> imgList = imgMapper.selectImg(img);
             User user = userMapper.selectByUserId(data.get(0).getPublishId());

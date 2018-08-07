@@ -42,7 +42,11 @@ public class ItemApi {
     }
 
     @RequestMapping(value = "/item", method = RequestMethod.GET)
-    public RestData getItem(ItemVo itemVo) {
-        return itemService.getItem(itemVo);
+    public RestData getItem(ItemVo itemVo, HttpServletRequest request) {
+        User currentUser = TokenUtil.getUserByToken(request);
+        if (null == currentUser) {
+            return new RestData(2, ErrorMessage.PLEASE_RELOGIN);
+        }
+        return itemService.getItem(itemVo,request);
     }
 }

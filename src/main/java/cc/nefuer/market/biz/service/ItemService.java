@@ -5,6 +5,8 @@ import cc.nefuer.market.core.model.Item;
 import cc.nefuer.market.core.model.User;
 import cc.nefuer.market.core.model.vo.ItemVo;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author jimi花
  * @dare 2018/7/28
@@ -24,5 +26,5 @@ public interface ItemService {
      * @param itemVo
      * @return
      */
-    RestData getItem(ItemVo itemVo);
+    RestData getItem(ItemVo itemVo, HttpServletRequest request);
 }
