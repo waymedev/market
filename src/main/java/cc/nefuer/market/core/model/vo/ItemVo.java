@@ -21,6 +21,11 @@ public class ItemVo {
      */
     private Integer itemId;
 
+    /**
+     * 发布者ID
+     */
+    private Integer publishId;
+
     public Integer getPage() {
         return page;
     }
@@ -43,5 +48,13 @@ public class ItemVo {
 
     public void setItemId(Integer itemId) {
         this.itemId = itemId;
+    }
+
+    public Integer getPublishId() {
+        return publishId;
+    }
+
+    public void setPublishId(Integer publishId) {
+        this.publishId = publishId;
     }
 }

@@ -131,6 +131,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public boolean deleteItem(int itemId) {
+        imgMapper.deleteByItemId(itemId);
         return 0 < itemMapper.deleteByItemId(itemId);
     }
 

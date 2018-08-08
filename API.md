@@ -1,6 +1,6 @@
-# 1.1 登陆相关
+# 1.1 登陆相关[完成]
 
-## 1.1.1 获取openid [完成]
+## 1.1.1 获取openid 
 
 - POST /openid
 - payload : 
@@ -26,7 +26,7 @@
 }
 ```
 
-## 1.1.2 添加用户 [完成]
+## 1.1.2 添加用户
 
 - POST /singup
 - payload : （允许为空）
@@ -77,7 +77,7 @@
 
 
 
-## 1.1.3 获取用户信息 [完成]
+## 1.1.3 获取用户信息
 
 - GET /info/{userId}
 - return :
@@ -97,9 +97,9 @@
 }
 ```
 
-# 1.2 轮播图设置
+# 1.2 轮播图设置[完成]
 
-## 1.2.1 获取轮图 [完成]
+## 1.2.1 获取轮图
 
 - GET /pic
 - return:
@@ -184,7 +184,6 @@
 ```
 
 # 1.3 图片相关 [完成]
-
 
 ## 1.3.1 获取uptoken 
 - GET /uptoken
@@ -550,9 +549,7 @@
 }
 ```
 
-## 1.4.7 购买 在购买后，通信被隐藏
-
-# 1.5 分类
+# 1.5 分类[完成]
 
 ## 1.5.1 获取分类 [完成]
 
@@ -577,19 +574,9 @@
 }
 ```
 
+# 1.6 评论
 
-
-
----- 暂停-----
-
-
-
-
-
-
-# 1.5 评论
-
-## 1.5.1 发布评论
+## 1.6.1 发布评论
 
 - POST /comment
 - payload ：
@@ -597,25 +584,26 @@
 
 ```json
 {
+	"userId" : 123,
 	"content" : "bababba"
 }
 	
 ```
 
 - return :
-
+	- data : 评论ID
 ```json
 {
 	"code" : 0,
-	"data" : true
+	"data" : 123
 }
 ```
 
-## 1.5.2 获取评论
+## 1.6.2 获取评论
 
 - GET /comment/{itemId}
 - return ：
-	- systemId ：评论id
+	- commentId ：评论id
 	- userId ：用户id
 	- content ：评论内容
 
@@ -624,41 +612,38 @@
 	"code" : 0,
 	"data" : [
 		{
-			"systemId" : 111,
+			"commentId" : 111,
 			"userId" : 111,
 			"content" : "dhfshfs"
 		
-		}
+		},
 		{
-			"systemId" : 111,
+			"commentId" : 111,
 			"userId" : 111,
 			"content" : "dhfshfs"
-		
 		}
 	]
 }
 ```
 
-# 1.6 收藏
+# 1.7 收藏
 
 ## 1.6.1 添加收藏
 
-- POST /star
+- POST /star/{itemId}
 - payload ：
 	- itemId ： 收藏商品id
 
 ```json
 {
-	"data" : 
-	{
-		"itemId" : "bababba"
-	}		
+	"userId" : 123,
+	"itemId" : 123		
 }
 	
 ```
 
 - return :
-
+	- data : 收藏ID
 ```json
 {
 	"code" : 0,
@@ -666,11 +651,11 @@
 }
 ```
 
-## 1.6.2 获取收藏
+## 1.6.2 获取收藏列表
 
 - GET /star/{userId}
 - return ：
-	- systemId ：收藏id
+	- starId ：收藏id
 	- userId ：用户id
 	- itemId ：商品id
 
@@ -679,21 +664,27 @@
 	"code" : 0,
 	"data" : [
 		{
-			"systemId" : 111,
+			"startId" : 111,
 			"userId" : 111,
 			"itemId" : 111		
 		}
 		{
-			"systemId" : 111,
+			"starId" : 111,
 			"userId" : 111,
 			"itemId" : 111			
 		}
-	]
+	],
+	"page": {
+        "currentPage": 1,
+        "totalPage": 3,
+        "pageSize": 4,
+        "totalSize": 12
+    }
 }
 ```
 
 ## 1.6.3 取消收藏
-- DELETE /delete/{systemID}
+- DELETE /star/{starId}
 - return ：
 
 ```json

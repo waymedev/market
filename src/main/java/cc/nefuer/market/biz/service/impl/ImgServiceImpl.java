@@ -54,7 +54,7 @@ public class ImgServiceImpl implements ImgService {
         } else {
             for (Img img1 : data) {
                 Map<String, Object> map = new HashMap<>(3);
-                map.put("imgId", img1.getItemId());
+                map.put("imgId", img1.getImgId());
                 map.put("itemId", img1.getItemId());
                 map.put("imgUrl", img1.getImgUrl());
                 rtv.add(map);

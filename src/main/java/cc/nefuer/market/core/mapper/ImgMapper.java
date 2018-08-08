@@ -47,11 +47,20 @@ public interface ImgMapper {
     Img selectByImgId(int imgId);
 
     /**
-     * 根据主键删除记录
+     * 根据imgId删除记录
      *
      * @param imgId 主键
      * @return 删除记录数
      */
     @Delete("DELETE FROM tb_img WHERE img_id=#{imgId}")
     int deleteByImgId(int imgId);
+
+    /**
+     * 根据itemId删除记录
+     *
+     * @param itemId 主键
+     * @return 删除记录数
+     */
+    @Delete("DELETE FROM tb_img WHERE item_id=#{itemId}")
+    int deleteByItemId(int itemId);
 }

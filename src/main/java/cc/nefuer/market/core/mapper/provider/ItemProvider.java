@@ -46,6 +46,9 @@ public class ItemProvider {
                 if (null != itemVo.getSortId()) {
                     WHERE("sort_id=" + itemVo.getSortId());
                 }
+                if (null != itemVo.getPublishId()) {
+                    WHERE("publish_id=" + itemVo.getPublishId());
+                }
                 ORDER_BY("item_id DESC,item_id LIMIT " + finalLimit);
             }
         }.toString();
