@@ -77,7 +77,7 @@ public class ImgServiceImpl implements ImgService {
     }
 
     @Override
-    public boolean deleteImg(int imgId) {
-        return 0 < imgMapper.deleteByImgId(imgId);
+    public boolean deleteImg(int itemId) {
+        return 0 < imgMapper.deleteByItemId(itemId);
     }
 }

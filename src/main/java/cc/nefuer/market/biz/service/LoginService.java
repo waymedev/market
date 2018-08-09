@@ -44,4 +44,12 @@ public interface LoginService {
      * @return
      */
     RestData getUserId(User user);
+
+    /**
+     * 修改用户信息
+     *
+     * @param user 参数集
+     * @return 是否修改成功
+     */
+    boolean putInfo(User user);
 }

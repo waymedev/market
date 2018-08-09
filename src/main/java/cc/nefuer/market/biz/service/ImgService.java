@@ -36,8 +36,8 @@ public interface ImgService {
 
     /**
      * 根据主键删除记录
-     * @param imgId
+     * @param itemId
      * @return
      */
-    boolean deleteImg(int imgId);
+    boolean deleteImg(int itemId);
 }

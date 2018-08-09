@@ -56,4 +56,12 @@ public interface UserMapper {
      */
     @SelectProvider(type = UserProvider.class, method = "selectByCondition")
     List<User> selectByCondition(User user);
+
+    /**
+     * 修改用户信息
+     * @param user
+     * @return
+     */
+    @UpdateProvider(type = UserProvider.class, method = "updateByUserId")
+    int updateByUserId(User user);
 }

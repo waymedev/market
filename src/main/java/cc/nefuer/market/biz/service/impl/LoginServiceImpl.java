@@ -130,4 +130,9 @@ public class LoginServiceImpl implements LoginService {
         map.put("message" , POST_EVENT_FAILED);
         return new RestData(2,map);
     }
+
+    @Override
+    public boolean putInfo(User user) {
+        return 0 < userMapper.updateByUserId(user);
+    }
 }

@@ -25,4 +25,26 @@ public class UserProvider {
             }
         }.toString();
     }
+
+    public String updateByUserId(User user) {
+        return new SQL() {
+            {
+                UPDATE("tb_user");
+                if (null != user.getWechatName()) {
+                    SET("wechat_name=#{wechatName}");
+                }
+                if (null != user.getName()) {
+                    SET("name=#{name}");
+                }
+                if (null != user.getAddress()) {
+                    SET("address=#{address}");
+                }
+                if (null != user.getTelNumber()) {
+                    SET("tel_number=#{telNumber}");
+                }
+                WHERE("user_id=#{userId}");
+
+            }
+        }.toString();
+    }
 }

@@ -97,6 +97,29 @@
 }
 ```
 
+## 1.1.4 修改用户信息
+
+- PUT /info
+- payload ：
+
+```json
+{
+  "userId" : 123,
+  "wechatName" : "昵称",
+  "name" : "真实姓名",
+  "telNumber" : 123,
+  "address" : "校区修改"
+}
+```
+
+- return :
+```json
+{
+  "code" : 0,
+  "data" : true
+}
+```
+
 # 1.2 轮播图设置[完成]
 
 ## 1.2.1 获取轮图
@@ -272,7 +295,7 @@
 - return :
 ```json
 {
-  "code" : 1,
+  "code" : 0,
   "data" : {
       "itemId" : 123,
       "imgUrl" : "http://baidu.com"
@@ -285,7 +308,7 @@
 - return :
 ```json
 {
-	"code" : 1,
+	"code" : 0,
 	"data" : true
 }
 ```
@@ -459,7 +482,7 @@
 - return : 
 ```json
 {
-	"code" : 1,
+	"code" : 0,
 	"data" : [
 		{
 			"itmId" : 123,
@@ -519,7 +542,7 @@
 
 ## 1.4.5 修改商品
 
-- PUT /item/{itemId}
+- PUT /item
 - payload :
 ```json
 {
@@ -533,7 +556,7 @@
 - return : 
 ```json
 {
-	"code" : 1,
+	"code" : 0,
 	"data" : true
 }
 ```
@@ -544,7 +567,7 @@
 - return :
 ```json
 {
-	"code" : 1,
+	"code" : 0,
 	"data" : true
 }
 ```

@@ -59,6 +59,11 @@ public interface ItemMapper {
     @SelectProvider(type = ItemProvider.class, method = "selectByCondition")
     List<Item> selectByCondition(ItemVo itemVo, Page page);
 
+    /**
+     * 修改商品
+     * @param item
+     * @return
+     */
     @UpdateProvider(type = ItemProvider.class, method = "updateByItemId")
     int updateByItemId(Item item);
 

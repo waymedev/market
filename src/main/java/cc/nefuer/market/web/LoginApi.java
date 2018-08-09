@@ -54,4 +54,14 @@ public class LoginApi {
         }
         return loginService.getInfo(userId);
     }
+
+    @RequestMapping(value = "/info", method = RequestMethod.PUT)
+    public RestData putInfo(@RequestBody User user, HttpServletRequest request) {
+        User currentUser = TokenUtil.getUserByToken(request);
+        if (null == currentUser) {
+            return new RestData(2, ErrorMessage.PLEASE_RELOGIN);
+        }
+
+        return new RestData(loginService.putInfo(user));
+    }
 }
