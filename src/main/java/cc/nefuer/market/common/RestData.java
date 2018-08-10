@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * @author jimi花
- * @dare 2018/7/24
+ * @date 2018/7/24
  */
 public class RestData {
     /**

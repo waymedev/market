@@ -2,7 +2,7 @@ package cc.nefuer.market.core.model.vo;
 
 /**
  * @author jimi花
- * @dare 2018/8/5
+ * @date 2018/8/5
  */
 public class ItemVo {
 

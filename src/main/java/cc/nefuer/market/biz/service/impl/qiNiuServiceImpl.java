@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  * @author jimi花
- * @dare 2018/7/25
+ * @date 2018/7/25
  */
 @Service
 public class qiNiuServiceImpl implements QiNiuService {

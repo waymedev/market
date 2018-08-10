@@ -5,7 +5,7 @@ import org.apache.ibatis.jdbc.SQL;
 
 /**
  * @author jimi花
- * @dare 2018/7/27
+ * @date 2018/7/27
  */
 public class PicProvider {
     public String selectByCondition() {

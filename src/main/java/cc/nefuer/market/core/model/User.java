@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * @author jimi花
- * @dare 2018/7/24
+ * @date 2018/7/24
  */
 public class User {
     /**

@@ -27,7 +27,7 @@ import static cc.nefuer.market.common.ErrorMessage.POST_EVENT_FAILED;
 
 /**
  * @author jimi花
- * @dare 2018/7/24
+ * @date 2018/7/24
  */
 @Service
 public class LoginServiceImpl implements LoginService {
@@ -44,7 +44,7 @@ public class LoginServiceImpl implements LoginService {
         //声明变量存储变量
         Map<String, Object> map = new HashMap<>(2);
         String AppId = "wx5926376844b9df5c";
-        String AppSecret = "743143f3edcc4d58f8195fa1db291b51";
+        String AppSecret = "5718b0b0e9b3e8b03e8ed06e1180a3fe";
         String url = "https://api.weixin.qq.com/sns/jscode2session?" +
                 "appid="+AppId+"&secret="+AppSecret+"&js_code="+user.getCode()+"&grant_type=authorization_code";
         String json = loadJSON(url);
@@ -53,6 +53,7 @@ public class LoginServiceImpl implements LoginService {
         Object sessionKey  = null;
         try {
             jb = new JSONObject(json);
+            System.out.println(jb);
             openid = jb.get("openid");
             sessionKey = jb.get("session_key");
             map.put("openId",openid);

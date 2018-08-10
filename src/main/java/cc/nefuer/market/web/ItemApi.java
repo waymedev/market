@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author jimi花
- * @dare 2018/7/28
+ * @date 2018/7/28
  */
 @CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
 @RestController

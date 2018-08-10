@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author jimi花
- * @dare 2018/7/27
+ * @date 2018/7/27
  */
 @CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
 @RestController

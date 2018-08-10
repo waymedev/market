@@ -2,7 +2,7 @@ package cc.nefuer.market.core.model;
 
 /**
  * @author jimi花
- * @dare 2018/8/8
+ * @date 2018/8/8
  */
 public class Star {
 
