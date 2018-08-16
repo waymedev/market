@@ -4,6 +4,7 @@ import cc.nefuer.market.common.Page;
 import cc.nefuer.market.common.util.PageUtil;
 import cc.nefuer.market.core.model.Item;
 import cc.nefuer.market.core.model.vo.ItemVo;
+import jdk.nashorn.internal.objects.annotations.Where;
 import org.apache.ibatis.jdbc.SQL;
 
 /**
@@ -84,6 +85,42 @@ public class ItemProvider {
                 }
                 WHERE("item_id=#{itemId}");
 
+            }
+        }.toString();
+    }
+
+    public String search(ItemVo itemVo, Page page) {
+        String limit = "4";
+        if (null != page) {
+            limit = PageUtil.getLimit(page.getCurrentPage(), page.getPageSize());
+        }
+
+        String finalLimit = limit;
+        return new SQL() {
+            {
+
+                SELECT(" item_id AS itemId,name," +
+                        "price, content, sort_id AS sortId , publish_id AS publishId, " +
+                        "purchase_id AS purchaseId, views, status, create_time AS createTime," +
+                        "last_edit_time AS lastEditTime ");
+                FROM(" tb_item ");
+                WHERE(" name like "+ itemVo.getName());
+                OR();
+                WHERE(" content like " + itemVo.getName());
+                ORDER_BY(" item_id DESC,item_id LIMIT " + finalLimit);
+            }
+        }.toString();
+    }
+
+    public String searchCount(ItemVo itemVo) {
+        return new SQL() {
+            {
+
+                SELECT(" count(item_id) AS totalSize ");
+                FROM(" tb_item ");
+                WHERE(" name like " + itemVo.getName());
+                OR();
+                WHERE(" content like " + itemVo.getName());
             }
         }.toString();
     }

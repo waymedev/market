@@ -43,4 +43,10 @@ public interface ItemService {
      */
     boolean putItem(Item item);
 
+    /**
+     * 根据名称 内容模糊搜索
+     * @param itemVo
+     * @return
+     */
+    RestData search(ItemVo itemVo);
 }

@@ -75,4 +75,23 @@ public interface ItemMapper {
      */
     @Delete("DELETE FROM tb_item WHERE item_id=#{itemId}")
     int deleteByItemId(int itemId);
+
+    /**
+     * 分页查询
+     *
+     * @param itemVo 参数集
+     * @param page   分页信息
+     * @return 符合条件的记录
+     */
+    @SelectProvider(type = ItemProvider.class, method = "search")
+    List<Item> search(ItemVo itemVo, Page page);
+
+    /**
+     * 搜索计数
+     *
+     * @param itemVo 参数集
+     * @return 符合条件的记录
+     */
+    @SelectProvider(type = ItemProvider.class, method = "searchCount")
+    Page searchCount(ItemVo itemVo);
 }

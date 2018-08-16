@@ -11,6 +11,7 @@ import cc.nefuer.market.core.model.Img;
 import cc.nefuer.market.core.model.Item;
 import cc.nefuer.market.core.model.User;
 import cc.nefuer.market.core.model.vo.ItemVo;
+import org.omg.CORBA.ObjectHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -138,5 +139,44 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public boolean putItem(Item item) {
         return 0 < itemMapper.updateByItemId(item);
+    }
+
+    @Override
+    public RestData search(ItemVo itemVo) {
+
+        Page page ;
+        if(null == itemVo.getPage())
+            itemVo.setPage(1);
+
+        page = itemMapper.searchCount(itemVo);
+        System.out.println(page.getTotalSize());
+        page.setCurrentPage(itemVo.getPage());
+        page.setPageSize(4);
+        page = PageUtil.checkPage(page);
+
+        List<Map<String,Object>> rtv = new ArrayList<>();
+        List<Item> data = itemMapper.search(itemVo,page);
+
+        for(Item items : data) {
+            Img img = new Img();
+            img.setItemId(items.getItemId());
+            List<Img> imgList = imgMapper.selectImg(img);
+            User user = userMapper.selectByUserId(items.getPublishId());
+            Map<String, Object> map = new HashMap<>(11);
+            map.put("itemId",items.getItemId());
+            map.put("name",items.getName());
+            map.put("price",items.getPrice());
+            map.put("sortId",items.getSortId());
+            map.put("content",items.getContent());
+            map.put("publishId",items.getPublishId());
+            map.put("profileImg",user.getProfileImg());
+            map.put("wechatName",user.getWechatName());
+            map.put("views",items.getViews());
+            map.put("createTime",items.getCreateTime());
+            map.put("img",imgList);
+            rtv.add(map);
+        }
+
+        return new RestData(rtv,page);
     }
 }

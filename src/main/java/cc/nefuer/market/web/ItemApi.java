@@ -68,4 +68,13 @@ public class ItemApi {
 
         return new RestData(itemService.putItem(item));
     }
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET,produces="application/json;charset=utf-8")
+    public RestData search(ItemVo itemVo, HttpServletRequest request) {
+        User currentUser = TokenUtil.getUserByToken(request);
+        if (null == currentUser) {
+            return new RestData(2, ErrorMessage.PLEASE_RELOGIN);
+        }
+        return itemService.search(itemVo);
+    }
 }
