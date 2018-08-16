@@ -605,7 +605,7 @@
 }
 ```
 
-# 1.6 评论
+# 1.6 评论相关 [完成]
 
 ## 1.6.1 发布评论
 
@@ -616,7 +616,9 @@
 ```json
 {
 	"userId" : 123,
-	"content" : "bababba"
+	"itemId" : 123,
+	"content" : "bababba",
+	"parentId" : //如果是发布者回复再带这个字段 (默认为空)
 }
 	
 ```
@@ -632,7 +634,16 @@
 
 ## 1.6.2 获取评论
 
-- GET /comment/{itemId}
+- GET /comment
+- paload : 
+	- 要查哪个就传哪个参
+```json
+{
+	"itemId" : 123,
+	"userId" : 123
+}
+```
+
 - return ：
 	- commentId ：评论id
 	- userId ：用户id
@@ -653,15 +664,33 @@
 			"userId" : 111,
 			"content" : "dhfshfs"
 		}
-	]
+	],
+	"page": {
+        "currentPage": 1,
+        "totalPage": 3,
+        "pageSize": 4,
+        "totalSize": 12
+    }
 }
 ```
 
-# 1.7 收藏 [完成]]
+## 1.6.3 删除评论
+
+- DELETE /comment/{commentId}
+- return ：
+
+```json
+{
+	"code" : 0,
+	"data" : true
+}
+```
+
+# 1.7 收藏相关 [完成]
 
 ## 1.6.1 添加收藏
 
-- POST /star/{itemId}
+- POST /star
 - payload ：
 	- itemId ： 收藏商品id
 
@@ -684,7 +713,7 @@
 
 ## 1.6.2 获取收藏列表
 
-- GET /star/{userId}
+- GET /star?userId=
 - return ：
 	- starId ：收藏id
 	- userId ：用户id
@@ -718,6 +747,29 @@
 - DELETE /star/{starId}
 - return ：
 
+```json
+{
+	"code" : 0,
+	"data" : true
+}
+```
+
+## 1.6.4 是否收藏
+
+- GET /isstar
+- pyaload :
+	- userId
+	- itemId
+
+```json
+{
+	"userId" : 123,
+	"ietmId" : 123
+}
+```
+
+- return :
+	- data : 被收藏 true 未收藏 false
 ```json
 {
 	"code" : 0,
