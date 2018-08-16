@@ -33,7 +33,11 @@ public class CommentApi {
         if (null == currentUser) {
             return new RestData(2, ErrorMessage.PLEASE_RELOGIN);
         }
-        return new RestData(commentService.postComment(comment));
+        if (commentService.postComment(comment)) {
+            return new RestData(comment.getCommentId());
+        } else {
+            return new RestData(1, ErrorMessage.POST_EVENT_FAILED);
+        }
     }
 
     @RequestMapping(value = "/comment", method = RequestMethod.GET)

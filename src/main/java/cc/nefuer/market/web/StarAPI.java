@@ -32,7 +32,11 @@ public class StarAPI {
         if (null == currentUser) {
             return new RestData(2, ErrorMessage.PLEASE_RELOGIN);
         }
-        return new RestData(starService.postStar(star));
+        if (starService.postStar(star)) {
+            return new RestData(star.getStarId());
+        } else {
+            return new RestData(1, ErrorMessage.POST_EVENT_FAILED);
+        }
     }
 
     @RequestMapping(value = "/star", method = RequestMethod.GET)
