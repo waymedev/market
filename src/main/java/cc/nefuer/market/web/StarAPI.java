@@ -63,6 +63,11 @@ public class StarAPI {
         if (null == currentUser) {
             return new RestData(2, ErrorMessage.PLEASE_RELOGIN);
         }
-        return new RestData(starService.isStar(star));
+        Star star1 = starService.isStar(star);
+        if(star1 != null)
+            return new RestData(star1.getStarId());
+        else
+            return new RestData(false);
+
     }
 }

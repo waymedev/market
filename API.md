@@ -804,12 +804,12 @@
 ```json
 {
 	"userId" : 123,
-	"ietmId" : 123
+	"itemId" : 123
 }
 ```
 
 - return :
-	- data : 被收藏 true 未收藏 false
+	- data : 被收藏 StarId 未收藏 false
 ```json
 {
 	"code" : 0,

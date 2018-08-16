@@ -38,5 +38,5 @@ public interface StarService {
      * @param star
      * @return
      */
-    boolean isStar(Star star);
+    Star isStar(Star star);
 }

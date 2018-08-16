@@ -66,9 +66,8 @@ public class StarServiceImpl implements StarService {
     }
 
     @Override
-    public boolean isStar(Star star) {
-        if(starMapper.isSelect(star) == null)
-            return false;
-        return true;
+    public Star isStar(Star star) {
+        Star star1 =  starMapper.isSelect(star);
+        return star1;
     }
 }
