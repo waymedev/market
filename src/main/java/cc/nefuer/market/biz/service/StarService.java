@@ -32,4 +32,11 @@ public interface StarService {
      * @return
      */
     boolean delete(int starId);
+
+    /**
+     * 是否被收藏
+     * @param star
+     * @return
+     */
+    boolean isStar(Star star);
 }

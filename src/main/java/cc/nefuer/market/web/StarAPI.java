@@ -52,4 +52,13 @@ public class StarAPI {
         }
         return new RestData(starService.delete(starId));
     }
+
+    @RequestMapping(value = "/isstar", method = RequestMethod.GET)
+    public RestData isStar(Star star, HttpServletRequest request) {
+        User currentUser = TokenUtil.getUserByToken(request);
+        if (null == currentUser) {
+            return new RestData(2, ErrorMessage.PLEASE_RELOGIN);
+        }
+        return new RestData(starService.isStar(star));
+    }
 }

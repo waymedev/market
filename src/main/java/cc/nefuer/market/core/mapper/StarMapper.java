@@ -54,4 +54,12 @@ public interface StarMapper {
      */
     @Delete("DELETE FROM tb_star WHERE star_id=#{starId}")
     int deleteByStarId(int starId);
+
+    /**
+     * 查询是否有记录
+     * @param star
+     * @return
+     */
+    @SelectProvider(type = StarProvider.class, method = "isSelect")
+    Star isSelect(Star star);
 }

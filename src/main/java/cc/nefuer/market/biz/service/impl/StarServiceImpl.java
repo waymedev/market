@@ -64,4 +64,11 @@ public class StarServiceImpl implements StarService {
     public boolean delete(int starId) {
         return 0 < starMapper.deleteByStarId(starId);
     }
+
+    @Override
+    public boolean isStar(Star star) {
+        if(starMapper.isSelect(star) == null)
+            return false;
+        return true;
+    }
 }
