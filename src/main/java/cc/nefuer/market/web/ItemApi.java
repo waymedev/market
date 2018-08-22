@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 
 /**
  * @author jimi花
@@ -73,6 +74,7 @@ public class ItemApi {
     public RestData search(ItemVo itemVo, HttpServletRequest request) {
         User currentUser = TokenUtil.getUserByToken(request);
         if (null == currentUser) {
+
             return new RestData(2, ErrorMessage.PLEASE_RELOGIN);
         }
         return itemService.search(itemVo);

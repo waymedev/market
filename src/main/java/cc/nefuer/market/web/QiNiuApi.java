@@ -26,11 +26,7 @@ public class QiNiuApi {
 
     @RequestMapping(value = "/uptoken", method = RequestMethod.GET)
     public Map<String, Object> getUpToken() {
-        QiNiu qiNiu = new QiNiu();
-        qiNiu.setAk("J3GdyGZQ0-_6IXr0o1oPtStijmbQ66wsz0Euoi2h");
-        qiNiu.setSk("F2ea5kVfOlX1h_dv4yIIic0NH7eU_X18566dN3o2");
-        qiNiu.setBucket("nefuer");
-        return qiNiuService.getUpToken(qiNiu);
+        return qiNiuService.getUpToken();
     }
 
 }

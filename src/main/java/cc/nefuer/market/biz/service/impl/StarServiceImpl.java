@@ -46,7 +46,7 @@ public class StarServiceImpl implements StarService {
 
         page = starMapper.countByCondition(star);
         page.setCurrentPage(star.getPage());
-        page.setPageSize(4);
+        page.setPageSize(8);
         page = PageUtil.checkPage(page);
         List<Map<String,Object>> rtv = new ArrayList<>();
         List<Star> data = starMapper.selectByCondition(star,page);

@@ -29,7 +29,7 @@ public class CommentProvider {
     }
 
     public String selectByCondition(Comment comment, Page page) {
-        String limit = "4";
+        String limit = "8";
         if (null != page) {
             limit = PageUtil.getLimit(page.getCurrentPage(), page.getPageSize());
         }

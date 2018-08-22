@@ -5,7 +5,10 @@ import cc.nefuer.market.common.Page;
 import cc.nefuer.market.common.RestData;
 import cc.nefuer.market.common.util.PageUtil;
 import cc.nefuer.market.core.mapper.CommentMapper;
+import cc.nefuer.market.core.mapper.ImgMapper;
+import cc.nefuer.market.core.mapper.UserMapper;
 import cc.nefuer.market.core.model.Star;
+import cc.nefuer.market.core.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,10 +26,14 @@ import java.util.Map;
 public class CommentServiceImpl implements CommentService {
 
     private final CommentMapper commentMapper;
+    private final UserMapper userMapper;
+    private final ImgMapper imgMapper;
 
     @Autowired
-    public CommentServiceImpl(CommentMapper commentMapper) {
+    public CommentServiceImpl(CommentMapper commentMapper,UserMapper userMapper,ImgMapper imgMapper) {
         this.commentMapper = commentMapper;
+        this.userMapper = userMapper;
+        this.imgMapper = imgMapper;
     }
     @Override
     public boolean postComment(Comment comment) {
@@ -43,14 +50,16 @@ public class CommentServiceImpl implements CommentService {
 
         page = commentMapper.countByCondition(comment);
         page.setCurrentPage(comment.getPage());
-        page.setPageSize(4);
+        page.setPageSize(8);
         page = PageUtil.checkPage(page);
         List<Map<String,Object>> rtv = new ArrayList<>();
         List<Comment> data = commentMapper.selectByCondition(comment,page);
         for(Comment comment1 : data) {
-            Map<String, Object> map = new HashMap<>(5);
+            User user = userMapper.selectByUserId(comment1.getUserId());
+            Map<String, Object> map = new HashMap<>(7);
             map.put("commentId",comment1.getCommentId());
-            map.put("userId",comment1.getUserId());
+            map.put("wechatName",user.getWechatName());
+            map.put("profileImg",user.getProfileImg());
             map.put("content",comment1.getContent());
             map.put("parentId",comment1.getParentId());
             map.put("createTime",comment1.getCreateTime());

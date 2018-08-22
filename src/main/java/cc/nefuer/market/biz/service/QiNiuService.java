@@ -13,5 +13,5 @@ public interface QiNiuService {
     /**
      * 获得uptoken
      */
-    Map<String, Object> getUpToken(QiNiu qiNiu);
+    Map<String, Object> getUpToken();
 }

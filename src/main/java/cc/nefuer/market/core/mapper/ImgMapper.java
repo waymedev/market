@@ -63,4 +63,16 @@ public interface ImgMapper {
      */
     @Delete("DELETE FROM tb_img WHERE item_id=#{itemId}")
     int deleteByItemId(int itemId);
+
+    /**
+     * 根据itemId查询
+     * @param itemId
+     * @return
+     */
+    @Select("SELECT * FROM tb_img WHERE item_id=#{itemId};")
+    @Results({
+            @Result(property = "imgId", column = "img_id"),
+            @Result(property = "imgUrl", column = "img_url"),
+    })
+    List<Img> selectByItemId(int itemId);
 }

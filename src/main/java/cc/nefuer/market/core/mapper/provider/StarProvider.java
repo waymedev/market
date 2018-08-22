@@ -17,12 +17,15 @@ public class StarProvider {
 
                 SELECT("count(star_id) AS totalSize");
                 FROM("tb_star");
+                if(star.getUserId() != null) {
+                    WHERE("user_id=" + star.getUserId());
+                }
             }
         }.toString();
     }
 
     public String selectByCondition(Star star, Page page) {
-        String limit = "4";
+        String limit = "8";
         if (null != page) {
             limit = PageUtil.getLimit(page.getCurrentPage(), page.getPageSize());
         }

@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -64,7 +65,7 @@ public class ItemServiceImpl implements ItemService {
 
         page = itemMapper.countByCondition(itemVo);
         page.setCurrentPage(itemVo.getPage());
-        page.setPageSize(4);
+        page.setPageSize(8);
         page = PageUtil.checkPage(page);
         List<Map<String,Object>> rtv = new ArrayList<>();
         List<Item> data = itemMapper.selectByCondition(itemVo,page);
@@ -148,6 +149,11 @@ public class ItemServiceImpl implements ItemService {
         if(null == itemVo.getPage())
             itemVo.setPage(1);
 
+        String s = null;
+
+        s = "'%"+ itemVo.getName()+"%'";
+        itemVo.setName(s);
+
         page = itemMapper.searchCount(itemVo);
         System.out.println(page.getTotalSize());
         page.setCurrentPage(itemVo.getPage());
@@ -155,6 +161,7 @@ public class ItemServiceImpl implements ItemService {
         page = PageUtil.checkPage(page);
 
         List<Map<String,Object>> rtv = new ArrayList<>();
+        System.out.println(itemVo.getName());
         List<Item> data = itemMapper.search(itemVo,page);
 
         for(Item items : data) {

@@ -43,8 +43,8 @@ public class LoginServiceImpl implements LoginService {
     public Map<String, Object> getCode(User user) {
         //声明变量存储变量
         Map<String, Object> map = new HashMap<>(2);
-        String AppId = "wx5926376844b9df5c";
-        String AppSecret = "5718b0b0e9b3e8b03e8ed06e1180a3fe";
+        String AppId = "wxe9b4c964ca831e40";
+        String AppSecret = "847f8e1e9af13662dc4d4f07767162b8";
         String url = "https://api.weixin.qq.com/sns/jscode2session?" +
                 "appid="+AppId+"&secret="+AppSecret+"&js_code="+user.getCode()+"&grant_type=authorization_code";
         String json = loadJSON(url);

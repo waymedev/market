@@ -28,7 +28,7 @@ public class ItemProvider {
 
 
     public String selectByCondition(ItemVo itemVo, Page page) {
-        String limit = "4";
+        String limit = "8";
         if (null != page) {
             limit = PageUtil.getLimit(page.getCurrentPage(), page.getPageSize());
         }
@@ -90,7 +90,7 @@ public class ItemProvider {
     }
 
     public String search(ItemVo itemVo, Page page) {
-        String limit = "4";
+        String limit = "8";
         if (null != page) {
             limit = PageUtil.getLimit(page.getCurrentPage(), page.getPageSize());
         }
